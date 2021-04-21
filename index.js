@@ -1,4 +1,9 @@
 const myServer = require('./MyServer');
 const myRouter = require('./MyRouter');
+const myHandler = require('./MyHandler');
 
-myServer.start();
+let handle = {};
+handle['/'] = myHandler.start;
+handle['/hello'] = myHandler.hello;
+
+myServer.start(myRouter.route);

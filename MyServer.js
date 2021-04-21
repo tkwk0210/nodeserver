@@ -7,14 +7,9 @@ const baseUrl = hostname + ":" + 8000;
 
 function start(route) {
     function onRequest(req, res){
-        let sBody = 'Hello, world! <br> I am in the cloud class.';
-
         console.log('Request receive.');
-        pathname = new url.URL();
+        pathname = new url.URL(req.url);
         route(pathname);
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write('Hello, world');
-        res.end();
     }
 
     server = http.createServer(onRequest);
